@@ -31,7 +31,7 @@ jobs:
     steps:
       - azure-cli/install
       - azure-cli/login-with-user:
-          alternate-tenant: true
+          alternate-tenant: false
       - run:
           command: az resource list
           name: List resources of tenant stored as `AZURE_TENANT` env var
