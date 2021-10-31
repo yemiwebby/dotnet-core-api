@@ -1,0 +1,42 @@
+version: 2.1
+orbs:
+  azure-cli: circleci/azure-cli@1.2.0
+  windows: circleci/windows@2.2.0
+
+jobs:
+  build:
+    description: Build application with Release configuration
+    executor:
+      name: windows/default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dotnet-packages-v1-{{ checksum "demoDotnet.csproj" }}
+      - run:
+          name: "Install project dependencies"
+          command: dotnet.exe restore
+      - run:
+          name: "Build Application according to some given configuration"
+          command: dotnet.exe build --configuration Release
+  verify-install:
+    executor: azure-cli/default
+    steps:
+      - azure-cli/install
+      - run:
+          command: az -v
+          name: Verify Azure CLI is installed
+  login-to-azure:
+    executor: azure-cli/default
+    steps:
+      - azure-cli/install
+      - azure-cli/login-with-user:
+          alternate-tenant: true
+      - run:
+          command: az resource list
+          name: List resources of tenant stored as `AZURE_TENANT` env var
+workflows:
+  example-workflow:
+    jobs:
+      - verify-install
+      - login-to-azure
