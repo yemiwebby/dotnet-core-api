@@ -42,9 +42,13 @@ jobs:
           command: az webapp deployment source show --resource-group DefaultResourceGroup-CUS --name dotnet-core-api
       - run:
           name: "Print Working Directory"
-          command: ls -la
+          command: pwd
+      - run:
+          name: "View all files"
+          command: ls
 workflows:
   example-workflow:
     jobs:
+      - build
       - verify-install
       - login-to-azure
