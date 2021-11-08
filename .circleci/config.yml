@@ -23,7 +23,7 @@ jobs:
           name: "Publish to a subfolder"
           command: |
             dotnet.exe publish --configuration Release --output WebAPiFolder
-            cd /home/circleci/project/dotnet-core-api/WebAPiFolder
+            ls
             pwd
   verify-install:
     executor: azure-cli/default
