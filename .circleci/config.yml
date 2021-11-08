@@ -53,7 +53,7 @@ jobs:
           alternate-tenant: false
       - run:
           command: az resource list
-          name: List resources of tenant stored as `AZURE_TENANT` env var
+          name: List resource of tenant stored as `AZURE_TENANT` env var
       - run:
           command: az webapp deployment source show --resource-group laparrilla_portal --name dotnet-core-api
       - run:
