@@ -64,6 +64,4 @@ jobs:
 workflows:
   example-workflow:
     jobs:
-      - login-to-azure
       - verify-install
-      - build
