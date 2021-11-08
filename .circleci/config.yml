@@ -39,7 +39,7 @@ jobs:
           command: az resource list
           name: List resources of tenant stored as `AZURE_TENANT` env var
       - run:
-          command: az webapp deployment source show --resource-group DefaultResourceGroup-CUS --name dotnet-core-api
+          command: az webapp deployment source show --resource-group laparrilla_portal --name dotnet-core-api
       - run:
           name: "Print Working Directory"
           command: pwd
@@ -48,7 +48,7 @@ jobs:
           command: ls
       - run:
           name: "Deploy Web App to Azure"
-          command: az webapp deployment source --resource-group DefaultResourceGroup-CUS --name dotnet-core-api --app-working-dir C:\Users\circleci\project\WebAPiFolder
+          command: az webapp deployment source --resource-group laparrilla_portal --name dotnet-core-api --app-working-dir C:\Users\circleci\project\WebAPiFolder
 
 workflows:
   example-workflow:
