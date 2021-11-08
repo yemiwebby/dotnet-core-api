@@ -45,10 +45,9 @@ jobs:
           command: az webapp deployment source show --resource-group laparrilla_portal --name dotnet-core-api
       - run:
           name: "Print Working Directory"
-          command: pwd
-      - run:
-          name: "View all files"
-          command: ls
+          command: |
+            ls
+            pwd
       - run:
           name: "Deploy Web App to Azure"
           command: |
