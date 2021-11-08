@@ -35,6 +35,8 @@ jobs:
       - run:
           command: az resource list
           name: List resources of tenant stored as `AZURE_TENANT` env var
+      - run:
+          command: az webapp deployment source show --resource-group DefaultResourceGroup-CUS --name dotnet-core-api
 workflows:
   example-workflow:
     jobs:
