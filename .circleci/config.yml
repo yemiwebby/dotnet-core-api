@@ -19,6 +19,9 @@ jobs:
       - run:
           name: "Build Application according to some given configuration"
           command: dotnet.exe build --configuration Release
+      - run:
+          name: "Publish to a subfolder"
+          command: dotnet.exe publish --configuration Release --output WebAPiFolder
   verify-install:
     executor: azure-cli/default
     steps:
@@ -39,7 +42,9 @@ jobs:
           command: az webapp deployment source show --resource-group DefaultResourceGroup-CUS --name dotnet-core-api
       - run:
           name: "Print Working Directory"
-          command: pwd
+          command: ls -la
+      - run:
+          name:
 workflows:
   example-workflow:
     jobs:
