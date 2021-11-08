@@ -66,6 +66,4 @@ workflows:
     jobs:
       - login-to-azure
       - verify-install
-      - build:
-          requires:
-            - login-to-azure
+      - build
