@@ -48,7 +48,7 @@ jobs:
           command: ls
       - run:
           name: "Deploy Web App to Azure"
-          command: az webapp deployment source --resource-group `AZURE_RESOURCE_GROUP` --name dotnet-core-api --app-working-dir C:\Users\circleci\project\WebAPiFolder\
+          command: az webapp deployment source --resource-group DefaultResourceGroup-CUS --name dotnet-core-api --app-working-dir C:\Users\circleci\project\WebAPiFolder\
 
 workflows:
   example-workflow:
