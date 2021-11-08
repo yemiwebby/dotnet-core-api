@@ -25,6 +25,8 @@ jobs:
             dotnet.exe publish --configuration Release --output WebAPiFolder
             ls
             pwd
+            ls -la
+            cd /WebAPiFolder/
   verify-install:
     executor: azure-cli/default
     steps:
