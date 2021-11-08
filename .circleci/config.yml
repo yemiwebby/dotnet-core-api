@@ -47,7 +47,6 @@ jobs:
           name: "Print Working Directory"
           command: |
             ls
-            pwd
       - run:
           name: "Deploy Web App to Azure"
           command: |
