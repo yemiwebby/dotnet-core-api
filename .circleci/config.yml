@@ -48,7 +48,7 @@ jobs:
           command: ls
       - run:
           name: "Deploy Web App to Azure"
-          command: az webapp deployment source config --resource-group laparrilla_portal --name dotnet-core-api --app-working-dir C:\Users\circleci\project\WebAPiFolder
+          command: az webapp deployment source config-local-git --resource-group laparrilla_portal --name dotnet-core-api --app-working-dir C:\Users\circleci\project\WebAPiFolder
 
 workflows:
   example-workflow:
