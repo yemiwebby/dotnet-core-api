@@ -28,19 +28,6 @@ jobs:
             cd ~/project/WebAPiFolder/
             pwd
             ls
-    steps:
-      - azure-cli/install
-      - azure-cli/login-with-user:
-          alternate-tenant: false
-      - run:
-          command: az resource list
-          name: List resources of tenant stored as `AZURE_TENANT` env var
-      - run:
-          command: az webapp deployment source show --resource-group laparrilla_portal --name dotnet-core-api
-      - run:
-          name: "Print Working Directory"
-          command: |
-            ls
       - run:
           name: "Deploy Web App to Azure"
           command: |
@@ -50,7 +37,7 @@ jobs:
             cd ~/project/WebAPiFolder/
             git add . && git commit -m "Deployed app"
             git push azure main:master
-              
+
   verify-install:
     executor: azure-cli/default
     steps:
@@ -73,21 +60,12 @@ jobs:
           name: "Print Working Directory"
           command: |
             ls
-      - run:
-          name: "Deploy Web App to Azure"
-          command: |
-            az webapp deployment source config-local-git --resource-group laparrilla_portal --name dotnet-core-api
-            git init
-            git remote add azure https://laparrilla-portal@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
-            cd ~/project/WebAPiFolder/
-            git add . && git commit -m "Deployed app"
-            git push azure main:master
 
 workflows:
   example-workflow:
     jobs:
-      - build
-      - verify-install
-      - login-to-azure:
+      - login-to-azure
+      - build:
           requires:
-            - build
+            - login-to-azure
+      - verify-install
