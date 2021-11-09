@@ -31,10 +31,10 @@ jobs:
 
   verify-install:
     executors:
-      azure-default:
+      azure-cli:
         name: azure-cli/default
-      windows-default:
-        name: windows/default
+      # windows-default:
+      #   name: windows/default
     steps:
       - checkout
       - azure-cli/install
