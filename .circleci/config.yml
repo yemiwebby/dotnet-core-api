@@ -52,8 +52,6 @@ jobs:
           name: "Print Working Directory"
           command: |
             ls
-      - azure-cli/login-with-user:
-          alternate-tenant: false
       - run:
           name: "Deploy Web App to Azure"
           command: |
