@@ -44,6 +44,9 @@ jobs:
       - azure-cli/login-with-user:
           alternate-tenant: false
       - run:
+          name: "Install project dependencies"
+          command: dotnet.exe restore
+      - run:
           command: az resource list
           name: List resource of tenant stored as `AZURE_TENANT` env var
       - run:
