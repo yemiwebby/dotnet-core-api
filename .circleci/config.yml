@@ -3,6 +3,11 @@ orbs:
   azure-cli: circleci/azure-cli@1.2.0
   windows: circleci/windows@2.2.0
 
+executors:
+  my-executor:
+    azure-cli: azure-cli/default
+    windows: windows/default
+
 jobs:
   build:
     description: Build application with Release configuration
@@ -30,11 +35,7 @@ jobs:
             ls
 
   verify-install:
-    executors:
-      azure-cli:
-        name: azure-cli/default
-      # windows-default:
-      #   name: windows/default
+    executor: my-executor
     steps:
       - checkout
       - azure-cli/install
