@@ -43,6 +43,9 @@ jobs:
       - azure-cli/install
       - azure-cli/login-with-user:
           alternate-tenant: false
+      - restore_cache:
+          keys:
+            - dotnet-packages-v1-{{ checksum "demoDotnet.csproj" }}
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
