@@ -32,19 +32,19 @@ jobs:
   verify-install:
     executor: azure-cli/default
     steps:
-      - azure-cli/install
-      - run:
-          command: az -v
-          name: Verify Azure CLI is installed
-  login-to-azure:
-    executor: 
-      name: azure-cli/default
-      name: windows/default
-    steps:
       - checkout
       - azure-cli/install
       - azure-cli/login-with-user:
           alternate-tenant: false
+      - run:
+          command: az -v
+          name: Verify Azure CLI is installed
+  login-to-azure:
+    executor: windows/default
+    steps:
+      - run:
+          command: az -v
+          name: Verify Azure CLI is installed
       - restore_cache:
           keys:
             - dotnet-packages-v1-{{ checksum "demoDotnet.csproj" }}
@@ -74,5 +74,7 @@ workflows:
   example-workflow:
     jobs:
       - verify-install
-      - login-to-azure
+      - login-to-azure:
+          requires:
+            - verify-install
       - build
