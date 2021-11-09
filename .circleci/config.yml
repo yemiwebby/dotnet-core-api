@@ -54,6 +54,8 @@ jobs:
           command: |
             az webapp deployment source config-local-git --resource-group laparrilla_portal --name dotnet-core-api
             git init
+            git config --global user.email "yemiwebby@gmail.com"
+            git config --global user.name "yemiwebby"
             git remote add azure https://laparrilla-portal@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
             cd ~/project/WebAPiFolder/
             git add . 
