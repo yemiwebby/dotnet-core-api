@@ -34,7 +34,7 @@ jobs:
             - WebAPiFolder
 
   login-to-azure-and-deploy:
-    executor: windows/default
+    executor: azure-cli/default
     steps:
       - azure-cli/install
       - azure-cli/login-with-user:
