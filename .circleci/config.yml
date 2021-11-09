@@ -44,12 +44,6 @@ jobs:
           name: Verify Azure CLI is installed
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - dotnet-packages-v1-{{ checksum "demoDotnet.csproj" }}
-      - run:
-          name: "Install project dependencies"
-          command: dotnet.exe restore
       - run:
           command: az resource list
           name: List resource of tenant stored as `AZURE_TENANT` env var
