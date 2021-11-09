@@ -61,8 +61,8 @@ jobs:
             git config --global user.password "@@Dinner2158"
             git add . 
             git commit -m "Deployed app"
-            git show-ref
             git push -u azure master
+            echo 'completed'
 workflows:
   build-and-deploy:
     jobs:
