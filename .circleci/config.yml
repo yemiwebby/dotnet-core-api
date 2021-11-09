@@ -39,7 +39,7 @@ jobs:
   login-to-azure:
     executor: azure-cli/default
     steps:
-      = checkout
+      - checkout
       - azure-cli/install
       - azure-cli/login-with-user:
           alternate-tenant: false
