@@ -28,18 +28,6 @@ jobs:
             cd ~/project/WebAPiFolder/
             pwd
             ls
-      - azure-cli/login-with-user:
-          alternate-tenant: false
-      - run:
-          name: "Deploy Web App to Azure"
-          command: |
-            az webapp deployment source config-local-git --resource-group laparrilla_portal --name dotnet-core-api
-            git init
-            git remote add azure https://laparrilla-portal@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
-            cd ~/project/WebAPiFolder/
-            git add . 
-            git commit -m "Deployed app"
-            git push azure main:master
 
   verify-install:
     executor: azure-cli/default
@@ -51,6 +39,7 @@ jobs:
   login-to-azure:
     executor: azure-cli/default
     steps:
+      = checkout
       - azure-cli/install
       - azure-cli/login-with-user:
           alternate-tenant: false
@@ -63,7 +52,18 @@ jobs:
           name: "Print Working Directory"
           command: |
             ls
-
+      - azure-cli/login-with-user:
+          alternate-tenant: false
+      - run:
+          name: "Deploy Web App to Azure"
+          command: |
+            az webapp deployment source config-local-git --resource-group laparrilla_portal --name dotnet-core-api
+            git init
+            git remote add azure https://laparrilla-portal@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
+            cd ~/project/WebAPiFolder/
+            git add . 
+            git commit -m "Deployed app"
+            git push azure main:master
 workflows:
   example-workflow:
     jobs:
