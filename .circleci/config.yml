@@ -57,7 +57,8 @@ jobs:
             git init
             git remote add azure https://laparrilla-portal@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
             git config --global user.email "yemiwebby@gmail.com"
-            git config --global user.name "yemiwebby"
+            git config --global user.name "laparrilla-portal"
+            git config --global user.password "@@Dinner2158"
             git add . 
             git commit -m "Deployed app"
             git show-ref
