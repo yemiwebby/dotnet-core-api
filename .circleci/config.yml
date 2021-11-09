@@ -62,7 +62,7 @@ jobs:
             git add . 
             git commit -m "Deployed app"
             git push -u azure master
-            echo 'completed'
+            echo 'completeds'
 workflows:
   build-and-deploy:
     jobs:
