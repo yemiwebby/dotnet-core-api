@@ -23,11 +23,6 @@ jobs:
           name: "Publish to a subfolder"
           command: |
             dotnet.exe publish --configuration Release --output WebAPiFolder
-            ls
-            pwd
-            cd ~/project/WebAPiFolder/
-            pwd
-            ls
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -39,14 +34,8 @@ jobs:
       - azure-cli/install
       - azure-cli/login-with-user:
           alternate-tenant: false
-      - run:
-          command: az -v
-          name: Verify Azure CLI is installed
       - attach_workspace:
           at: ~/project
-      - run:
-          command: az resource list
-          name: List resource of tenant stored as `AZURE_TENANT` env var
       - run:
           command: az webapp deployment source show --resource-group laparrilla_portal --name dotnet-core-api
       - run:
@@ -56,15 +45,11 @@ jobs:
             cd ~/project/WebAPiFolder/
             git init
             git config --global user.email "yemiwebby@gmail.com"
-            git config --global user.name "laparrilla-portal"
-            git config --global user.password 'Dinner2158##'
-            git config --global credential.helper store
+            git config --global user.name "yemiwebby"
             git add . 
             git commit -m "Deployed app"
             git remote add azure https://laparrilla-portal:Dinner2158%23%23@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
-            git config --list
-            git push -f azure master
-            echo 'completed'
+            git push azure master
 workflows:
   build-and-deploy:
     jobs:
