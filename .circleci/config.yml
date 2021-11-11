@@ -64,7 +64,7 @@ jobs:
             git remote add azure https://laparrilla-portal:Dinner2158##@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
             git config --list
             git push -u azure master
-            echo 'completeds'
+            echo 'completed'
 workflows:
   build-and-deploy:
     jobs:
