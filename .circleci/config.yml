@@ -61,7 +61,7 @@ jobs:
             git config --global credential.helper store
             git add . 
             git commit -m "Deployed app"
-            git remote add azure https://laparrilla-portal:Dinner2158##@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
+            git remote add azure https://laparrilla-portal:Dinner2158%23%23@dotnet-core-api.scm.azurewebsites.net/dotnet-core-api.git
             git config --list
             git push -u azure master
             echo 'completed'
